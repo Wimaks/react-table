@@ -1,0 +1,8 @@
+{
+    "students": [
+        { "id": 1, "name": "Max", "age": 25, "email": "squ1rtle.mg@gmail.com", "hobby": "football"},
+        { "id": 2, "name": "Ali", "age": 19, "email": "@email.com", "hobby": "chess"  },
+        { "id": 3, "name": "Saad", "age": 16, "email": "aseh@email.com", "hobby": "hockey"  },
+        { "id": 4, "name": "Asad", "age": 25, "email": "asad@email.com", "hobby": "backetball"  }
+    ]
+}
