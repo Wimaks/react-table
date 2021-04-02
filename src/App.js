@@ -10,33 +10,36 @@ export default class Table extends React.Component {
 
 renderTableHeader() {
   let header = Object.keys(this.state.students[0])  
-  console.log(header);
   return header.map((key, index) => {
     return <th key={index}>{key}</th>
   })
 }
 
-renderTableData() {
+renderTableBody() {
   return (
     this.state.students.map((student, index) => {
-    const { id, name, age, email, hobby } = student //destructuring
     return (
-      <tr key={id}>
-        <td>{id}</td>
-        <td>{name}</td>
-        <td>{age}</td>
-        <td>{email}</td>
-        <td>{hobby}</td>
+      <tr key={student.id}>
+        <td>{student.id}</td>
+        <td>{student.name}</td>
+        <td>{student.age}</td>
+        <td>{student.email}</td>
+        <td>{student.hobby}</td>
+        <button onClick={() => this.remove(student.id)}>X</button>
       </tr>
     )
   })
   )
 }
 
+remove = (rowId) => {
+  const arrayCopy = this.state.students.filter((row) => row.id !== rowId);
+  this.setState({ students: arrayCopy });
+};
+
 AddRow() {
-    let newRows = this.state.students;
-    newRows.push({id: 5, name: "Misha", age: 20, email: "none", hobby: "Fifa"});
-    this.setState({students: newRows});
+    this.state.students.push({id: 5 , name: "Misha", age: 20, email: "none", hobby: "Fifa"});
+    this.setState({students: this.state.students});
   }
 
 render() {
@@ -46,7 +49,7 @@ render() {
       <table id='students'>
         <tbody>
          <tr>{this.renderTableHeader()}</tr>
-          {this.renderTableData()}
+          {this.renderTableBody()}
         </tbody>
       </table>
       <button onClick= { this.AddRow.bind(this) } >Добавить строку</button>
